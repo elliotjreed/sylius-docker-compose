@@ -21,12 +21,17 @@ You can then run the necessary `sylius:install` and `yarn` commands to initialis
 When prompted, the following settings should be entered:
 
 Database Host: mysql
+
 Database Port: 3306
+
 Database Username: sylius
+
 Database Password: sylius
+
 Database Name: sylius_dev
 
 You then access the container with:
+
 
 `docker-compose exec php`
 
