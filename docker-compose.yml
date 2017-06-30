@@ -1,0 +1,59 @@
+version: "3.2"
+
+services:
+    nginx:
+        container_name: nginx
+        image: nginx:alpine
+        links:
+            - php
+        volumes:
+            - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+            - ~/.ssh/id_rsa:/root/.ssh/id_rsa:ro
+            - ../web/:/var/www/html/web
+        ports:
+            - "5000:80"
+        networks:
+            - front-tier
+            - back-tier
+
+    mysql:
+        container_name: mysql
+        image: mariadb:latest
+        volumes:
+            - db-data:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: sylius_dev
+            MYSQL_USER: sylius
+            MYSQL_PASSWORD: sylius
+        networks:
+            - back-tier
+
+    php:
+        container_name: php
+        build: php
+        working_dir: /var/www/html
+        volumes:
+            - ../:/var/www/html
+        links:
+            - mysql
+            - elasticsearch
+            - memcached
+        networks:
+            - back-tier
+
+    elasticsearch:
+        image: elasticsearch
+
+    memcached:
+        image: memcached
+
+    selenium:
+        image: selenium/standalone-chrome-debug
+        
+volumes:
+    db-data:
+
+networks:
+    front-tier:
+    back-tier:

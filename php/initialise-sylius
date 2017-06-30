@@ -1,0 +1,10 @@
+#!/bin/bash
+
+cd /var/www/html
+
+echo "Installing Sylius backend, follow the instructions..."
+php bin/console sylius:install
+
+echo "Installing frontend dependencies..."
+yarn install
+yarn run gulp
