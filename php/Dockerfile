@@ -1,8 +1,8 @@
 FROM php:7-fpm
 
-RUN apt get update && \
-    apt get full-upgrade -y && \
-    apt-get install -y curl wget git nano libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev libpng12-dev libicu-dev libicu52
+RUN apt update && \
+    apt full-upgrade -y && \
+    apt install -y curl wget git nano libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev libpng12-dev libicu-dev libicu52
 
 RUN curl -sLS https://deb.nodesource.com/setup_8.x | bash - && \
     curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
