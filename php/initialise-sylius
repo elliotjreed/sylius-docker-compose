@@ -6,7 +6,6 @@ echo "Database Host: mysql"
 echo "Database Port: 3306"
 echo "Database Username: sylius"
 echo "Database Password: sylius"
-echo "Database Name: sylius_dev"
 
 php bin/console sylius:install
 
