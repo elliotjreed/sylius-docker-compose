@@ -33,7 +33,7 @@ You then access the container with:
 
 `docker-compose exec php`
 
-Note: you'll be in the Sylius root directory (_/var/www/html_) by default;
+Note: you'll be in the Sylius root directory (_/var/www/html_) by default.
 
 
 You can get the IP address of the Sylius Docker container using the following:
